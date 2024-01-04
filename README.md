@@ -9,14 +9,22 @@ BayWa r.e. LUSY Messaging between TMS &amp; WMS
 ```
 
 ## Usage
+To create a message & serialize it :
 ```php
-use \BayWaReLusy\TmsWmsMessages\TmsToWmsUpdateHydrator;
 use \BayWaReLusy\TmsWmsMessages\TmsToWmsUpdate;
 
-$messageData = [...];
+$tmsToWmsUpdate = new TmsToWmsUpdate();
+$tmsToWmsUpdate->setPickingOrderId($pickingOrder->getId());
 
-$hydrator       = new TmsToWmsUpdateHydrator();
-$tmsToWmsUpdate = $hydrator->hydrate($messageData, new TmsToWmsUpdate());
+$jsonMessage = $tmsToWmsUpdate->serializeToJson();
+```
 
+To deserialize a message :
+```php
+use \BayWaReLusy\TmsWmsMessages\TmsToWmsUpdate;
+
+$jsonMessage = '{...}';
+
+$tmsToWmsUpdate = TmsToWmsUpdate::createFromJsonString($jsonMessage);
 $pickingOrderId = $tmsToWmsUpdate->getPickingOrderId();
 ```
