@@ -2,11 +2,14 @@
 
 namespace BayWaReLusy\TmsWmsMessages;
 
-class TmsToWmsUpdate
+class TmsToWmsUpdate implements TmsWmsMessageInterface
 {
     /** @var string|null Picking Order ID */
     protected ?string $pickingOrderId = null;
 
+    /**
+     * @inheritDoc
+     */
     public static function createFromJsonString(string $json): TmsToWmsUpdate
     {
         $tmsToWmsUpdate = new TmsToWmsUpdate();
@@ -19,6 +22,9 @@ class TmsToWmsUpdate
         return $tmsToWmsUpdate;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function serializeToJson(): string
     {
         return json_encode(['pickingOrderId' => $this->getPickingOrderId()]);
