@@ -14,7 +14,7 @@ class TmsToWmsUpdateTest extends TestCase
         $this->instance = new TmsToWmsUpdate();
     }
 
-    public function testSetGetPickingOrderId()
+    public function testSetGetPickingOrderId(): void
     {
         $id = 'c9450096-cce9-41c6-9516-6dc9a92eed37';
         $this->instance->setPickingOrderId($id);

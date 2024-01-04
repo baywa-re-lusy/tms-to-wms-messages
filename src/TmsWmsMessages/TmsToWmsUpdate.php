@@ -4,13 +4,13 @@ namespace BayWaReLusy\TmsWmsMessages;
 
 class TmsToWmsUpdate
 {
-    /** @var string Picking Order ID */
-    protected string $pickingOrderId;
+    /** @var string|null Picking Order ID */
+    protected ?string $pickingOrderId = null;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPickingOrderId(): string
+    public function getPickingOrderId(): ?string
     {
         return $this->pickingOrderId;
     }
