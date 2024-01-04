@@ -14,7 +14,7 @@ class TmsToWmsUpdate implements TmsWmsMessageInterface
     {
         $tmsToWmsUpdate = new TmsToWmsUpdate();
 
-        foreach (json_decode($json, true) as $key => $value) {
+        foreach ((array)json_decode($json, true) as $key => $value) {
             $method = 'set' . ucfirst($key);
             $tmsToWmsUpdate->$method($value);
         }
@@ -27,7 +27,7 @@ class TmsToWmsUpdate implements TmsWmsMessageInterface
      */
     public function serializeToJson(): string
     {
-        return json_encode(['pickingOrderId' => $this->getPickingOrderId()]);
+        return (string)json_encode(['pickingOrderId' => $this->getPickingOrderId()]);
     }
 
     /**

@@ -20,4 +20,21 @@ class TmsToWmsUpdateTest extends TestCase
         $this->instance->setPickingOrderId($id);
         $this->assertEquals($id, $this->instance->getPickingOrderId());
     }
+
+    public function testCreateFromJsonString()
+    {
+        $object = TmsToWmsUpdate::createFromJsonString('{"pickingOrderId":"c9450096-cce9-41c6-9516-6dc9a92eed37"}');
+        $this->assertEquals('c9450096-cce9-41c6-9516-6dc9a92eed37', $object->getPickingOrderId());
+    }
+
+    public function testSerializeToJson()
+    {
+        $id = 'c9450096-cce9-41c6-9516-6dc9a92eed37';
+        $this->instance->setPickingOrderId($id);
+
+        $this->assertEquals(
+            '{"pickingOrderId":"c9450096-cce9-41c6-9516-6dc9a92eed37"}',
+            $this->instance->serializeToJson()
+        );
+    }
 }
